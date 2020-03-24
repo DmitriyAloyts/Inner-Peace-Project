@@ -83,7 +83,8 @@ const Detail = props => {
           </Col>
           {/* {state.favorites.indexOf(state.currentPost) !== -1 ? ( */}
           {favouriteIds.indexOf(state.currentPost._id) !== -1 ? (
-
+              console.log("fav: " + favouriteIds.indexOf(state.currentPost._id)),
+              console.log(state.currentPost._id),
             <button className="btn btn-danger" onClick={removeFavorite}>
               Remove from Favorites!
             </button>
