@@ -8,8 +8,7 @@ import { SET_CURRENT_POST, ADD_FAVORITE, REMOVE_FAVORITE, ADD_COMMENT, LOADING }
 
 const Detail = props => {
   const [state, dispatch] = useStoreContext();
-  useEffect(()=>{
-    console.log(state)
+  useEffect(() => {
   }, [state])
   useEffect(() => {
     console.log(commentRef.current.value);
@@ -32,9 +31,6 @@ const Detail = props => {
       _id: state.currentPost._id
     });
   };
-  const favouriteIds = state.favorites.map(favourite => favourite._id)
-
-  console.log(state.currentPost);
 
   const commentRef = useRef();
   const [commentstate, commentdispatch] = useStoreContext();
@@ -52,14 +48,14 @@ const Detail = props => {
         console.log(result)
         dispatch({
           type: ADD_COMMENT,
-          comment: {_id: result.data.comments[result.data.comments.length-1], comment:commentRef.current.value},
+          comment: { _id: result.data.comments[result.data.comments.length - 1], comment: commentRef.current.value },
           post_id: state.currentPost._id
         });
         commentRef.current.value = "";
       })
       .catch(err => console.log(err));
 
-    
+
   };
 
   return (
@@ -81,22 +77,19 @@ const Detail = props => {
               <p>{state.currentPost.body}</p>
             </article>
           </Col>
-          {/* {state.favorites.indexOf(state.currentPost) !== -1 ? ( */}
-          {favouriteIds.indexOf(state.currentPost._id) !== -1 ? (
-              console.log("fav: " + favouriteIds.indexOf(state.currentPost._id)),
-              console.log(state.currentPost._id),
+          {state.favorites.indexOf(state.currentPost) !== -1 ? (
             <button className="btn btn-danger" onClick={removeFavorite}>
               Remove from Favorites!
             </button>
           ) : (
               <button className="btn" onClick={addFavorite}>
                 ❤️ Add to Favorites
-            </button>
+              </button>
             )}
         </Row>
         <Row>
           <input className="form-control mb-5" ref={commentRef} placeholder="comments" />
-          <button className="btn btn-success mt-3 mb-5" disabled={state.loading} type="submit"  onClick={handleSubmit} >
+          <button className="btn btn-success mt-3 mb-5" disabled={state.loading} type="submit" onClick={handleSubmit} >
             Submit
           </button>
           <Col size="md-2">
