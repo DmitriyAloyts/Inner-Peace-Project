@@ -64,9 +64,9 @@ const Detail = props => {
         <Row>
           <Col size="md-12">
             {/* <Jumbotron> */}
-              <h4>
-                {state.currentPost.title} by {state.currentPost.author}
-              </h4>
+            <h4>
+              {state.currentPost.title} by {state.currentPost.author}
+            </h4>
             {/* </Jumbotron> */}
           </Col>
         </Row>
@@ -76,24 +76,25 @@ const Detail = props => {
               {/* <h3>Content:</h3> */}
               <p>{state.currentPost.body}</p>
             </article>
-          </Col>
-          {state.favorites.indexOf(state.currentPost) !== -1 ? (
-            <button className="btn btn-primary mt-3 mb-5" onClick={removeFavorite}>
-              Remove from Favorites!
-            </button>
-          ) : (
-              <button className="btn btn-primary mt-3 mb-5" onClick={addFavorite}>
-                ❤️ Add to Favorites
+            {state.favorites.indexOf(state.currentPost) !== -1 ? (
+              <button className="btn btn-primary mt-3 mb-5" onClick={removeFavorite}>
+                Remove from Favorites!
               </button>
-            )}
+            ) : (
+                <button className="btn btn-primary mt-3 mb-5" onClick={addFavorite}>
+                  ❤️ Add to Favorites
+                </button>
+              )}
+          </Col>
         </Row>
         <Row>
-          <input className="form-control mb-1" ref={commentRef} placeholder="comments" />
-          <button className="btn btn-secondary mt-3 mb-5" disabled={state.loading} type="submit" onClick={handleSubmit} >
-            Add Comment
-          </button>
-          <Col size="md-2">
-            <ul>
+          <Col size="md-10">
+            <input className="form-control mb-1" ref={commentRef} placeholder="comments" />
+            <button className="btn btn-secondary mt-3 mb-3" disabled={state.loading} type="submit" onClick={handleSubmit} >
+              Add Comment
+            </button>
+
+            <ul mb-5>
               {
                 // state.currentPost.comments &&
                 state.currentPost.comments.map((comment) => <li>{comment.comment}</li>)
