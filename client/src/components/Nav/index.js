@@ -5,10 +5,10 @@ function Nav() {
   const [store] = useStoreContext();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
       <a className="navbar-brand" href="/">
         {/* Your personal CMS */}
-        Inner Peace Blog
+        <h2>Inner Peace Blog</h2>
       </a>
       {store.loading ? <a className="navbar-brand ml-auto">Loading...</a> : <></>}
     </nav>

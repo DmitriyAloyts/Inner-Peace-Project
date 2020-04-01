@@ -63,34 +63,34 @@ const Detail = props => {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-              <h3>
+            {/* <Jumbotron> */}
+              <h4>
                 {state.currentPost.title} by {state.currentPost.author}
-              </h3>
-            </Jumbotron>
+              </h4>
+            {/* </Jumbotron> */}
           </Col>
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h3>Content:</h3>
+              {/* <h3>Content:</h3> */}
               <p>{state.currentPost.body}</p>
             </article>
           </Col>
           {state.favorites.indexOf(state.currentPost) !== -1 ? (
-            <button className="btn btn-danger" onClick={removeFavorite}>
+            <button className="btn btn-primary mt-3 mb-5" onClick={removeFavorite}>
               Remove from Favorites!
             </button>
           ) : (
-              <button className="btn" onClick={addFavorite}>
+              <button className="btn btn-primary mt-3 mb-5" onClick={addFavorite}>
                 ❤️ Add to Favorites
               </button>
             )}
         </Row>
         <Row>
-          <input className="form-control mb-5" ref={commentRef} placeholder="comments" />
-          <button className="btn btn-success mt-3 mb-5" disabled={state.loading} type="submit" onClick={handleSubmit} >
-            Submit
+          <input className="form-control mb-1" ref={commentRef} placeholder="comments" />
+          <button className="btn btn-secondary mt-3 mb-5" disabled={state.loading} type="submit" onClick={handleSubmit} >
+            Add Comment
           </button>
           <Col size="md-2">
             <ul>
